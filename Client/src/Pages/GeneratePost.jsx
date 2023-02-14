@@ -9,7 +9,7 @@ export default function GeneratePost() {
 
   const navigate = useNavigate();
   const [form, setForm] = useState({ name: '', prompt: '', photo: '' })
-  const [generatingImage, setGeneratingImage] = useState(true)
+  const [generatingImage, setGeneratingImage] = useState(false)
   const [loading, setLoading] = useState(false)
 
   function handleSubmit() { }
