@@ -6,7 +6,8 @@ Full stack DALL-E (OpenAI image generation) Clone
 2. Add your own .env file in the server root directory
 ```
 // .env example
-MONGODB_URL="mongodb+srv://dbUser:Dalle%401234@cluster0.glpccgu.mongodb.net/?retryWrites=true&w=majority"
+// in MONGODB_URL in the password replace the special characters with the % sign and its ascii code as: "%ASCII_CODE"
+MONGODB_URL="mongodb+srv://<userName>:<password>@cluster0.glpccgu.mongodb.net/?retryWrites=true&w=majority"
+OPENAI_API_KEY="YOUR API KEY"
 
-OPENAI_API_KEY="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"
 ```
