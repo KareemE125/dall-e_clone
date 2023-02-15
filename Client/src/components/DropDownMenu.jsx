@@ -19,12 +19,6 @@ export default function DropDownMenu() {
                     Generate
                 </Dropdown.Item>
             </NavLink >
-
-            <NavLink className="nav-link" to='/tops'>
-                <Dropdown.Item className='justify-center'>
-                    Tops
-                </Dropdown.Item>
-            </NavLink>
             <NavLink className="nav-link" to='/about-us'>
                 <Dropdown.Item className='justify-center'>
                     About Us

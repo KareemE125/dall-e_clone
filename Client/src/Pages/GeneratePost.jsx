@@ -2,7 +2,6 @@ import React, { useState } from 'react'
 import { preview } from '../assets/index.js'
 import { getRandomPrompt } from '../helpers'
 import { useNavigate } from 'react-router-dom'
-import { Toast } from 'flowbite-react'
 import Form from '../components/Form.jsx';
 import Loading from '../components/Loading.jsx';
 
@@ -14,7 +13,39 @@ export default function GeneratePost() {
   const [loading, setLoading] = useState(false)
   const [alert, setAlert] = useState('')
 
-  function handleSubmit() { }
+  async function handleSubmit(event) {
+    event.preventDefault();
+
+    if (form.prompt && form.photo) {
+      setLoading(true)
+
+      try {
+        const response = await fetch(
+          'http://localhost:5000/api/v1/post',
+          {
+            method: 'POST',
+            headers: {
+              'Content-type': 'application/json'
+            },
+            body: JSON.stringify(form)
+          })
+
+          await response.json()
+          navigate('/')
+      } catch (error) {
+        setAlert('Sharing or connection error')
+        setTimeout(() => setAlert(''), 2000)
+        console.log(error);
+      }
+      finally{
+        setLoading(false)
+      }
+    }
+    else{
+      setAlert('Enter a prompet and generate an image first')
+      setTimeout(() => setAlert(''), 2000)
+    }
+  }
 
   function handleChange(event) {
     setForm({ ...form, [event.target.name]: event.target.value })
@@ -118,7 +149,7 @@ export default function GeneratePost() {
         <div className='w-full'>
           <p className='opacity-50 pl-2 mt-8'>Now you can share your amazing generated image with other. Sumbit it now</p>
         </div>
-        <button type='submit' onClick={generateImage} className='w-full bg-violet-900 rounded-3xl py-2 px-4 right-1.5 mt-2'>
+        <button type='submit' onClick={handleSubmit} className='w-full bg-violet-900 rounded-3xl py-2 px-4 right-1.5 mt-2'>
           {loading ? 'Sharing.....' : 'Share Now'}
         </button>
       </div>

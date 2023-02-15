@@ -41,9 +41,6 @@ export default function NavBar()
                     <NavLink className="nav-link" to='/generate'>Generate</NavLink>
                 </li>
                 <li>
-                    <NavLink className="nav-link" to='/tops'>Tops</NavLink>
-                </li>
-                <li>
                     <NavLink className="nav-link" to='/about-us'>About Us</NavLink>
                 </li>
             </ul>
